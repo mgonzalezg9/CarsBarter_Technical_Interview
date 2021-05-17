@@ -10,6 +10,7 @@ import {
   FormControl,
 } from "@material-ui/core/";
 import { makeStyles } from "@material-ui/styles";
+import { Search } from "@material-ui/icons";
 
 const PROVINCIAS = [
   "Álava",
@@ -86,7 +87,7 @@ const Filter = () => {
     <Card className={classes.card}>
       <CardContent>
         <Grid container direction="row" justify="center" alignItems="center">
-          <Grid item xs={6} className={classes.content}>
+          <Grid item xs={7} className={classes.content}>
             <TextField
               label="Concesionario"
               variant="outlined"
@@ -96,7 +97,7 @@ const Filter = () => {
             />
           </Grid>
 
-          <Grid item xs={6}>
+          <Grid item xs={4}>
             <FormControl
               variant="outlined"
               className={classes.content}
@@ -116,17 +117,10 @@ const Filter = () => {
                 ))}
               </Select>
             </FormControl>
-            {/* <InputLabel id="lblProvincia">Provincia</InputLabel>
-            <Select
-              labelId="lblProvincia"
-              value={provincia}
-              onChange={(e) => setProvincia(e.target.value)}
-              style={{ minWidth: "75%" }}
-            >
-              {PROVINCIAS.map((p) => (
-                <MenuItem value={p}>{p}</MenuItem>
-              ))}
-            </Select> */}
+          </Grid>
+
+          <Grid item xs={1}>
+            <Search fontSize="large" />
           </Grid>
         </Grid>
       </CardContent>
