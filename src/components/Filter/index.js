@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Grid,
   TextField,
@@ -76,13 +76,16 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const Filter = () => {
+const Filter = (props) => {
   const [concesionario, setConcesionario] = useState("");
   const [provincia, setProvincia] = useState("");
 
   const classes = useStyles();
 
-  console.log(concesionario);
+  useEffect(() => {
+    props.onFilterChange(concesionario, provincia);
+  });
+
   return (
     <Card className={classes.card}>
       <CardContent>

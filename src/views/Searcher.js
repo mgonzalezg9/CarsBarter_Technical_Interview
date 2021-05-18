@@ -1,11 +1,8 @@
-import React from "react";
-import { ThemeProvider } from "@material-ui/styles";
-import Filter from "./Filter";
-import Navbar from "./Navbar";
-import Table from "./Table";
-
-import theme from "../ThemeConfig";
+import React, { useState, useEffect } from "react";
+import Filter from "../components/Filter";
+import Table from "../components/Table";
 import { Box } from "@material-ui/core";
+import axios from "axios";
 
 const rows = [
   {
@@ -55,18 +52,42 @@ const rows = [
   },
 ];
 
-const App = () => {
+const BASE_URL = "http://localhost:3001";
+
+const Searcher = () => {
+  const [concesionarios, setConcesionarios] = useState([]);
+  const [listado, setListado] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${BASE_URL}/data`)
+      .then((res) => {
+        setConcesionarios(res.data);
+      })
+      .catch((error) => {
+        console.error("Error recuperando los concesionarios:", error);
+      });
+  }, []);
+
+  const onFilterChange = (name, location) => {
+    let nuevo = concesionarios
+      .filter((c) => name === "" || c.name.includes(name))
+      .filter((c) => location === "" || c.address.includes(location));
+
+    setListado(nuevo);
+    // console.log(nuevo);
+  };
+
   return (
-    <ThemeProvider theme={theme}>
-      <Navbar></Navbar>
+    <div>
       <Box display="flex" justifyContent="center" mt={2}>
-        <Filter></Filter>
+        <Filter onFilterChange={onFilterChange}></Filter>
       </Box>
       <Box display="flex" justifyContent="center" mt={2}>
-        <Table rows={rows} style={{ width: "50%" }}></Table>
+        <Table rows={listado} style={{ width: "50%" }}></Table>
       </Box>
-    </ThemeProvider>
+    </div>
   );
 };
 
-export default App;
+export default Searcher;
