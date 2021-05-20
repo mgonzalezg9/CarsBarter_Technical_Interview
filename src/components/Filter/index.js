@@ -8,6 +8,7 @@ import {
   Card,
   CardContent,
   FormControl,
+  Box,
 } from "@material-ui/core/";
 import { makeStyles } from "@material-ui/styles";
 import { Search } from "@material-ui/icons";
@@ -90,7 +91,7 @@ const Filter = (props) => {
     <Card className={classes.card}>
       <CardContent>
         <Grid container direction="row" justify="center" alignItems="center">
-          <Grid item xs={7} className={classes.content}>
+          <Grid item xs={12} md={7} className={classes.content}>
             <TextField
               label="Concesionario"
               variant="outlined"
@@ -100,29 +101,31 @@ const Filter = (props) => {
             />
           </Grid>
 
-          <Grid item xs={4}>
-            <FormControl
-              variant="outlined"
-              className={classes.content}
-              style={{ minWidth: "75%" }}
-            >
-              <InputLabel id="lblProvincia">Provincia</InputLabel>
-              <Select
-                labelId="lblProvincia"
-                value={provincia}
-                onChange={(e) => setProvincia(e.target.value)}
+          <Grid item xs={12} md={4} className={classes.content}>
+            <Box my={2}>
+              <FormControl
+                variant="outlined"
                 className={classes.content}
+                style={{ minWidth: "75%" }}
               >
-                {PROVINCIAS.map((p) => (
-                  <MenuItem value={p} key={p}>
-                    {p}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+                <InputLabel id="lblProvincia">Provincia</InputLabel>
+                <Select
+                  labelId="lblProvincia"
+                  value={provincia}
+                  onChange={(e) => setProvincia(e.target.value)}
+                  className={classes.content}
+                >
+                  {PROVINCIAS.map((p) => (
+                    <MenuItem value={p} key={p}>
+                      {p}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Box>
           </Grid>
 
-          <Grid item xs={1}>
+          <Grid item xs={12} md={1} className={classes.content}>
             <Search fontSize="large" />
           </Grid>
         </Grid>

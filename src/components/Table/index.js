@@ -1,6 +1,8 @@
 import * as React from "react";
 import { DataGrid } from "@material-ui/data-grid";
 
+const PAGE_SIZE = 10;
+
 const columns = [
   { field: "name", headerName: "Concesionario", width: 300 },
   { field: "description", headerName: "Descripción", width: 400 },
@@ -16,10 +18,18 @@ const columns = [
   },
 ];
 
-const DataTable = ({ rows }) => {
+const DataTable = ({ rows, onRowClick }) => {
   return (
     <div style={{ width: "80%" }}>
-      <DataGrid rows={rows} columns={columns} pageSize={5} autoHeight={true} />
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        pageSize={PAGE_SIZE}
+        autoHeight={true}
+        onRowClick={(e) => {
+          onRowClick(e.row);
+        }}
+      />
     </div>
   );
 };
