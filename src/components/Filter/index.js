@@ -85,7 +85,7 @@ const Filter = (props) => {
 
   useEffect(() => {
     props.onFilterChange(concesionario, provincia);
-  });
+  }, [concesionario, provincia]);
 
   return (
     <Card className={classes.card}>

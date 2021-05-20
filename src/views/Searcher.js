@@ -19,6 +19,7 @@ const Searcher = ({ onSelection }) => {
         console.log("Concesionarios recuperados correctamente");
         // concesionarios = res.data.slice(0, 4);
         setConcesionarios(res.data);
+        setListado(res.data);
       })
       .catch((error) => {
         console.error("Error recuperando los concesionarios:", error);
@@ -30,7 +31,7 @@ const Searcher = ({ onSelection }) => {
       .filter((c) => name === "" || c.name.includes(name))
       .filter((c) => location === "" || c.address.includes(location));
 
-    // setListado(nuevo);
+    setListado(nuevo);
     // console.log(listado);
   };
 
@@ -41,7 +42,7 @@ const Searcher = ({ onSelection }) => {
       </Box>
       <Box display="flex" justifyContent="center" mt={2}>
         <Table
-          rows={concesionarios}
+          rows={listado}
           style={{ width: "50%" }}
           onRowClick={onSelection}
         ></Table>
