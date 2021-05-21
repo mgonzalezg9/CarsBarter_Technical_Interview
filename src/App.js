@@ -10,6 +10,7 @@ import Detail from "./views/Detail";
 const App = () => {
   const [selection, setSelection] = useState();
 
+  // Funcion de enrutamiento
   const handleSelection = (selection) => {
     setSelection(selection);
 

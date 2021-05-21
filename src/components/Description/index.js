@@ -3,7 +3,7 @@ import React from "react";
 
 const Description = ({ name, imageSrc, description }) => {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down("sm"));
+  const downSm = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <Grid container direction="row" justify="center" alignItems="center">
@@ -13,7 +13,7 @@ const Description = ({ name, imageSrc, description }) => {
         </Typography>
       </Grid>
       <Grid item xs={12} md={6} style={{ textAlign: "center" }}>
-        <img src={`https:${imageSrc}`} alt="" width={matches ? "60%" : "40%"} />
+        <img src={`https:${imageSrc}`} alt="" width={downSm ? "60%" : "40%"} />
       </Grid>
       <Grid item xs={12}>
         <Typography color="initial">{description}</Typography>

@@ -10,10 +10,10 @@ import HomeIcon from "@material-ui/icons/Home";
 import InfoIcon from "@material-ui/icons/Info";
 import SearchIcon from "@material-ui/icons/Search";
 
-const Lista = () => {
+const NavList = () => {
   return (
     <div>
-      <List component="nav" aria-label="Navbar list">
+      <List component="nav" aria-label="Lista del navbar">
         <ListItem button>
           <ListItemIcon>
             <HomeIcon />
@@ -44,4 +44,4 @@ const Lista = () => {
   );
 };
 
-export default Lista;
+export default NavList;

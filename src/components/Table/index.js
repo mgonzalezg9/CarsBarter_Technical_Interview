@@ -1,5 +1,6 @@
 import * as React from "react";
 import { DataGrid } from "@material-ui/data-grid";
+import { makeStyles } from "@material-ui/styles";
 
 const PAGE_SIZE = 10;
 
@@ -18,9 +19,17 @@ const columns = [
   },
 ];
 
+const useStyles = makeStyles((theme) => ({
+  data: {
+    width: "80%",
+  },
+}));
+
 const DataTable = ({ rows, onRowClick }) => {
+  const classes = useStyles();
+
   return (
-    <div style={{ width: "80%" }}>
+    <div className={classes.data}>
       <DataGrid
         rows={rows}
         columns={columns}

@@ -77,14 +77,14 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const Filter = (props) => {
+const Filter = ({ onFilterChange }) => {
   const [concesionario, setConcesionario] = useState("");
   const [provincia, setProvincia] = useState("");
 
   const classes = useStyles();
 
   useEffect(() => {
-    props.onFilterChange(concesionario, provincia);
+    onFilterChange(concesionario, provincia);
   }, [concesionario, provincia]);
 
   return (

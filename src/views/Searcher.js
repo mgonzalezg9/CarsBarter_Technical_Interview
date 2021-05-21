@@ -6,8 +6,6 @@ import axios from "axios";
 
 const BASE_URL = "http://localhost:3001";
 
-// let concesionarios = [];
-
 const Searcher = ({ onSelection }) => {
   const [concesionarios, setConcesionarios] = useState([]);
   const [listado, setListado] = useState([]);
@@ -17,7 +15,6 @@ const Searcher = ({ onSelection }) => {
       .get(`${BASE_URL}/data`)
       .then((res) => {
         console.log("Concesionarios recuperados correctamente");
-        // concesionarios = res.data.slice(0, 4);
         setConcesionarios(res.data);
         setListado(res.data);
       })
@@ -32,7 +29,6 @@ const Searcher = ({ onSelection }) => {
       .filter((c) => location === "" || c.address.includes(location));
 
     setListado(nuevo);
-    // console.log(listado);
   };
 
   return (

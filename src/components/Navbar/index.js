@@ -9,19 +9,12 @@ import {
   Drawer,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import Lista from "./List";
+import NavList from "./NavList";
 
 const drawerWidth = 240;
 
 const navStyles = makeStyles((theme) => ({
   offset: theme.mixins.toolbar, // min-height
-  // appBar: {
-  //   // Navbar logo
-  //   [theme.breakpoints.up("sm")]: {
-  //     width: `calc(100% - ${drawerWidth}px)`,
-  //     marginLeft: drawerWidth,
-  //   },
-  // },
 }));
 
 const drawerStyles = makeStyles((theme) => ({
@@ -41,7 +34,7 @@ const drawerStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
-  // necessary for content to be below app bar
+  // Necesario para que el contenido de la aplicación esté debajo
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
@@ -88,7 +81,7 @@ const Navbar = (props) => {
       >
         <div className={drawerClasses.toolbar}></div>
         <Divider />
-        <Lista></Lista>
+        <NavList></NavList>
       </Drawer>
 
       <div className={navClasses.offset}></div>
